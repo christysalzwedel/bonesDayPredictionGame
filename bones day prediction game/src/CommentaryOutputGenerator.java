@@ -52,7 +52,7 @@ public class CommentaryOutputGenerator {
 
     //This section selects 4 random strings from the list and creates a new list
     for (int i = 0; i<4; i++){
-        randomNumber= (randomPicker.nextInt(bonesComments.size()));
+        randomNumber = (randomPicker.nextInt(bonesComments.size()));
         String addLine = bonesComments.get(randomNumber);
 
         //unique strings are added
