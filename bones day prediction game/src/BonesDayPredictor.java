@@ -44,79 +44,34 @@ public class BonesDayPredictor {
                     System.out.println(commentary);
 
                     //this section allows the user to choose to get wisdom
-                    followUpComfyMountain("Would you like to climb Comfy Mountain now? (Y/N)",
+                    FollowUp.followUpComfyMountain("Would you like to climb Comfy Mountain now? (Y/N)",
                             "I'm sorry. You'll need to use that bones day energy to enter either y or n.",
                             "Okay! Thanks for stopping by! Have a great day!");
 
+                } else {
+                    String noBonesHere = new NoBonesPug().bonelessPug();
+                    System.out.print(noBonesHere);
+                    System.out.println("\n oh... ha ha ha... nope. No bones today.");
+                    String commentary = new CommentaryOutputGenerator(false).getCommentString();
+                    System.out.println(commentary);
+
+                    //this should allow the user to choose wisdom
+                    FollowUp.followUpComfyMountain("Would you like to bark for a lift up Comfy Mountain now? (Y/N)",
+                            "I know we aren't doing hard things today, but you still need to either enter y or n.",
+                            "Okay. Thanks for visiting! Have a super relaxing day! Take care!");
+
                 }
-            } else {
-                String noBonesHere = new NoBonesPug().bonelessPug();
-                System.out.print(noBonesHere);
-                System.out.println("\n oh... ha ha ha... nope. No bones today.");
-                String commentary = new CommentaryOutputGenerator(false).getCommentString();
-                System.out.println(commentary);
 
-                //this should allow the user to choose wisdom
-                followUpComfyMountain("Would you like to bark for a lift up Comfy Mountain now? (Y/N)",
-                        "I know we aren't doing hard things today, but you still need to either enter y or n.",
-                        "Okay. Thanks for visiting! Have a super relaxing day! Take care!");
-
-            }
-
-        } else if (whereToGo.equalsIgnoreCase("c")) {
-            try {
-                comfyMountainMethod();
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
+            } else if (whereToGo.equalsIgnoreCase("c")) {
+                try {
+                    ComfyMountainJourney.comfyMountainMethod();
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
-    }
 
 
-    public static void comfyMountainMethod() throws FileNotFoundException {
-        Scanner userInput = new Scanner(System.in);
-        String comfyPic = new ComfyMountainPic().comfyPillow();
-        System.out.print(comfyPic);
-        System.out.println("Welcome to comfy mountain. You've made it up here on your own!");
-        System.out.println("Truly you are worthy of wisdom from our sweet prince. Do you seek his words? (Y/N)");
-        String seeker = userInput.nextLine();
-        boolean getWisdom = true;
-
-        if (!seeker.equals(" ")) {
-            while (!seeker.equalsIgnoreCase("y") && !seeker.equalsIgnoreCase("n")) {
-                System.out.println("Are you weary from your climb? You'll need to enter Y or N.");
-                seeker = userInput.nextLine();
-
-            }
-            if (seeker.equalsIgnoreCase("y")) {
-                getWisdom = true;
-            } else if (seeker.equalsIgnoreCase("n")) {
-                getWisdom = false;
-            }
-            ComfyMountain wisdomOutput = new ComfyMountain(getWisdom);
-            System.out.println(wisdomOutput.getCurrentWisdom());
-
-        }
-    }
-
-    public static void followUpComfyMountain(String message, String badEntryMessage, String exitMessage) throws FileNotFoundException {
-        Scanner userInput = new Scanner(System.in);
-        //this method allows the user to continue to comfy mountain after a bones day prediction
-
-        System.out.println(message);
-        String userChoice = userInput.nextLine();
-        if (!userChoice.equals("")) {
-            while (!userChoice.equalsIgnoreCase("y") && !userChoice.equalsIgnoreCase("n")) {
-                System.out.println(badEntryMessage);
-            }
-            if (userChoice.equalsIgnoreCase("y")) {
-                comfyMountainMethod();
-
-            } else if (userChoice.equalsIgnoreCase("n")) {
-                System.out.println(exitMessage);
-            }
-
-        }
     }
 }
 
