@@ -1,11 +1,12 @@
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ComfyMountainJourney {
 
-    public static void comfyMountainMethod() throws FileNotFoundException {
+    public static void comfyMountainMethod() throws IOException {
         Scanner userInput = new Scanner(System.in);
-        String comfyPic = new ComfyMountainPic().comfyPillow();
+        String comfyPic = new ImageGenerator().comfyPillow();
         System.out.print(comfyPic);
         System.out.println("Welcome to comfy mountain. You've made it up here on your own!");
         System.out.println("Truly you are worthy of wisdom from our sweet prince. Do you seek his words? (Y/N)");

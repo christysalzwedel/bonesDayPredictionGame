@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -21,7 +22,7 @@ public class ComfyMountain {
 
     //this class reads a file, creates a matching list, and randomly selects a string from the list to return
 
-    public ComfyMountain(boolean getWisdom) throws FileNotFoundException {
+    public ComfyMountain(boolean getWisdom) throws IOException {
         this.currentWisdom = getCurrentWisdom();
 
         if (getWisdom) {
@@ -37,6 +38,7 @@ public class ComfyMountain {
                 String wisdom = wisdomList.get(wisdomNumber);
 
                 currentWisdom = "Noodle's wisdom for you today is: \n" + (wisdom);
+                LogMaker log = new LogMaker("Wisdom received");
 
             }
 

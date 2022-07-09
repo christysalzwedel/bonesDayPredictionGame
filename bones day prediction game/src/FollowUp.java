@@ -1,9 +1,10 @@
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class FollowUp {
 
-    public static void followUpComfyMountain(String message, String badEntryMessage, String exitMessage) throws FileNotFoundException {
+    public static void followUpComfyMountain(String message, String badEntryMessage, String exitMessage) throws IOException {
         Scanner userInput = new Scanner(System.in);
         //this method allows the user to continue to comfy mountain after a bones day prediction
 
