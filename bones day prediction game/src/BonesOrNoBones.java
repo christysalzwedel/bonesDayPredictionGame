@@ -18,6 +18,13 @@ double predictor;
        int predictionInt = ((int) predictor);
         return predictionInt % 2 == 0;
         }
+
+        public boolean VIPBonesDay(){
+        predictor= Math.random() * 100;
+        int predictionInt = ((int)predictor);
+        return (predictionInt % 2 == 0 && predictionInt % 3 == 0 && predictionInt % 5 == 0);
+        }
+
     }
 
 

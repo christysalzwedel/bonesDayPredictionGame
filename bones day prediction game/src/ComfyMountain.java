@@ -1,5 +1,4 @@
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +21,21 @@ public class ComfyMountain {
 
     //this class reads a file, creates a matching list, and randomly selects a string from the list to return
 
-    public ComfyMountain(boolean getWisdom) throws IOException {
+    public ComfyMountain(boolean getWisdom, boolean isVIP) throws IOException {
         this.currentWisdom = getCurrentWisdom();
+        String wisdomFile;
+
+        if (isVIP){
+            wisdomFile = "src/VIPWisdom";
+        }
+        else{
+            wisdomFile = "src/comfy-mountain-wisdom";
+        }
+
 
         if (getWisdom) {
 
-            File comfyWisdom = new File("src/comfy-mountain-wisdom");
+            File comfyWisdom = new File(wisdomFile);
             try (
                     Scanner comfyWisdomReader = new Scanner(comfyWisdom)) {
                 while (comfyWisdomReader.hasNextLine()) {
@@ -47,4 +55,5 @@ public class ComfyMountain {
                     + "\n His highness is resting and I will not disturb him for the likes of you.";
         }
     }
+
 }

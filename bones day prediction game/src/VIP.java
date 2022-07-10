@@ -12,14 +12,14 @@ public class VIP {
         boolean result = false;
 
         File vipCheck = new File("src/BonesLogger");
-        while (vipCheck.exists()) {
+        if (vipCheck.exists()) {
             Scanner currentLine = new Scanner(vipCheck);
             while(currentLine.hasNextLine()){
                 tempLog.add(currentLine.nextLine());
             }
 
             for (String readLine: tempLog) {
-                String date = readLine.substring(0, 9);
+                String date = readLine.substring(0, 10);
                 if (!vipTest.contains(date)) {
                     vipTest.add(date);
                 }

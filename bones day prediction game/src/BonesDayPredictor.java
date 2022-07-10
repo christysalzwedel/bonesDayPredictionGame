@@ -5,7 +5,8 @@ import java.lang.*;
 
 public class BonesDayPredictor {
     public static void main(String[] args) throws IOException {
-        boolean isVIP = false;
+        Scanner userInput = new Scanner(System.in);
+        boolean isVIP = new VIP().VIPMethod();
         LocalDate today = LocalDate.now();
         String thisYear = Integer.toString(today.getYear());
         String noodleString = thisYear + "-07-04";
@@ -15,17 +16,19 @@ public class BonesDayPredictor {
             String noodleDaySurprise = new ImageGenerator().printCake();
             System.out.println(noodleDaySurprise);
 
+           // System.out.println("Press enter to continue");
+
 
         }
-      /*  VIP statusCheck = new VIP();
-        if (statusCheck.VIPMethod()){
-            isVIP = true;
-            System.out.println("Welcome, VIP! Noodle loves you!");
-        }*/
+        if(isVIP){
+            System.out.println("Hello VIP! Noodle Loves you!");
+        }
+        else{
+            System.out.println("Hello there!");
+        }
 
 
 
-        Scanner userInput = new Scanner(System.in);
         System.out.println("Welcome to the bones day predictor and comfy mountain pilgrimage simulator");
         String boner = new ImageGenerator().throwMeABone();
         System.out.println(boner);
@@ -44,18 +47,27 @@ public class BonesDayPredictor {
             if (whereToGo.equalsIgnoreCase("b")) {
                 boolean isItABonesDay = new BonesOrNoBones().BonesDayPrediction();
                 if (isItABonesDay) {
-                    String bonesDayPug = new ImageGenerator().goBones();
-                    System.out.println(bonesDayPug);
-                    System.out.println("It's a bones day!");
-                    String commentary = new CommentaryOutputGenerator(true).getCommentString();
-                    System.out.println(commentary);
-                    LogMaker log = new LogMaker("It is a bones day");
+                    if (isVIP){
+                        boolean isItASuperBonesDay = new BonesOrNoBones().VIPBonesDay();
+                                if (isItASuperBonesDay){
+                                    String superBonesDay = new ImageGenerator().SuperBones();
+                                    System.out.print(superBonesDay);
+                                }
+                    }
+                    else {
+                        String bonesDayPug = new ImageGenerator().goBones();
+                        System.out.println(bonesDayPug);
+                        System.out.println("It's a bones day!");
+                        String commentary = new CommentaryOutputGenerator(true).getCommentString();
+                        System.out.println(commentary);
+                        LogMaker log = new LogMaker("It is a bones day");
 
 
-                    //this section allows the user to choose to get wisdom
-                    FollowUp.followUpComfyMountain("Would you like to climb Comfy Mountain now? (Y/N)",
-                            "I'm sorry. You'll need to use that bones day energy to enter either y or n.",
-                            "Okay! Thanks for stopping by! Have a great day!");
+                        //this section allows the user to choose to get wisdom
+                        FollowUp.followUpComfyMountain("Would you like to climb Comfy Mountain now? (Y/N)",
+                                "I'm sorry. You'll need to use that bones day energy to enter either y or n.",
+                                "Okay! Thanks for stopping by! Have a great day!");
+                    }
 
 
 

@@ -12,6 +12,8 @@ public class ComfyMountainJourney {
         System.out.println("Truly you are worthy of wisdom from our sweet prince. Do you seek his words? (Y/N)");
         String seeker = userInput.nextLine();
         boolean getWisdom = true;
+        boolean isVIP = new VIP().VIPMethod();
+
 
         if (!seeker.equals(" ")) {
             while (!seeker.equalsIgnoreCase("y") && !seeker.equalsIgnoreCase("n")) {
@@ -24,9 +26,11 @@ public class ComfyMountainJourney {
             } else if (seeker.equalsIgnoreCase("n")) {
                 getWisdom = false;
             }
-            ComfyMountain wisdomOutput = new ComfyMountain(getWisdom);
+
+            }
+            ComfyMountain wisdomOutput = new ComfyMountain(getWisdom, isVIP);
             System.out.println(wisdomOutput.getCurrentWisdom());
 
         }
     }
-}
+
