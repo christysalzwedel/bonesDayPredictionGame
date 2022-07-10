@@ -22,7 +22,7 @@ double predictor;
         public boolean VIPBonesDay(){
         predictor= Math.random() * 100;
         int predictionInt = ((int)predictor);
-        return (predictionInt % 2 == 0 && predictionInt % 3 == 0 && predictionInt % 5 == 0);
+        return (predictionInt % 2 == 0 && predictionInt % 3 == 0 );
         }
 
     }
